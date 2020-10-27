@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Food from "./Food";
 const CalculateCal = (props) => {
   const [life, setLife] = useState("sedentary");
   const [weight, setWeight] = useState(0);
@@ -61,6 +61,7 @@ const CalculateCal = (props) => {
           <option value="hardWord">Hard working</option>
         </select>
       </label>
+      <Food />
     </div>
   );
 };
