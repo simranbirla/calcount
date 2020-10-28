@@ -13,7 +13,7 @@ const AddWater = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { water: state.food.water };
+  return { water: state.body.water };
 };
 
 export default connect(mapStateToProps, { addWater })(AddWater);

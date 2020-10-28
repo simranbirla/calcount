@@ -57,7 +57,6 @@ const CalBMI = () => {
         <div>
           <h1>BMI IS :{bmi}</h1>
           {showBMI()}
-          <CalculateCal bmi={bmi} />
         </div>
       ) : (
         false

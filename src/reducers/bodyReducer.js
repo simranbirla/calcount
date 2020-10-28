@@ -3,7 +3,7 @@ const INITIAL_STATE = {
   cal: 0,
 };
 
-const foodReducer = (state = INITIAL_STATE, action) => {
+const bodyReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "ADD_WATER":
       return { ...state, water: state.water + action.payload };
@@ -14,4 +14,4 @@ const foodReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default foodReducer;
+export default bodyReducer;

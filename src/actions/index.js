@@ -5,3 +5,7 @@ export const addWater = () => {
 export const addCal = (cal) => {
   return { type: "ADD_CAL", payload: cal };
 };
+
+export const adBMI = (bmi) => {
+  return { type: "ADD_BMI", payload: bmi };
+};
