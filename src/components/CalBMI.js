@@ -1,15 +1,24 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addBMI, addWeight, addHeight } from "../actions";
+import { Link } from "react-router-dom";
+
 import CalculateCal from "./CalulateCal";
-const CalBMI = () => {
+
+const CalBMI = (props) => {
   const [height, setHeight] = useState(0);
   const [weight, setWeight] = useState(0);
   const [bmi, setBMI] = useState(0);
   const [show, setShow] = useState(false);
+
   const calculateBMI = (e) => {
     e.preventDefault();
     const bmival = weight / (height * height);
     setShow(true);
     setBMI(bmival.toFixed(2));
+    props.addBMI(bmival.toFixed(2));
+    props.addHeight(height);
+    props.addWeight(weight);
   };
 
   const showBMI = () => {
@@ -51,18 +60,29 @@ const CalBMI = () => {
             onChange={(e) => handleInput(e, "height")}
           />
         </label>
-        <button onClick={calculateBMI}>Calculate</button>
+        <button type="submit" onClick={calculateBMI}>
+          Calculate
+        </button>
       </form>
       {show ? (
         <div>
           <h1>BMI IS :{bmi}</h1>
           {showBMI()}
+          <CalculateCal bmi={bmi} />
         </div>
       ) : (
         false
       )}
+      <Link to="/frontpage">FRONTPAGE</Link>
     </div>
   );
 };
 
-export default CalBMI;
+const mapStatetoProps = (state) => {
+  console.log(state);
+  return state;
+};
+
+export default connect(mapStatetoProps, { addBMI, addHeight, addWeight })(
+  CalBMI
+);

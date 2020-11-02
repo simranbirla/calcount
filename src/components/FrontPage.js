@@ -1,14 +1,24 @@
 import React from "react";
-
-const FrontPage = () => {
+import { connect } from "react-redux";
+import AddWater from "./AddWater";
+const FrontPage = (props) => {
   return (
     <div>
-      NAME:SIMRAN BIRLA Weight:55Kg Height:1.5m
-      <p>BMI IS </p>
-      <p>GOAL IS </p>
+      NAME:SIMRAN BIRLA
+      <p>Weight:{props.body.weight}kg </p>
+      <p>Height:{props.body.height}m</p>
+      <p>BMI IS {props.body.bmi}</p>
+      <p>
+        GOAL IS {parseFloat(props.body.weight) + parseFloat(props.body.goal)}kg
+      </p>
       <p>Total cal intake</p>
     </div>
   );
 };
 
-export default FrontPage;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { body: state.body };
+};
+
+export default connect(mapStateToProps)(FrontPage);

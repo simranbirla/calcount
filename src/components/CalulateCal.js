@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Food from "./Food";
+import { connect } from "react-redux";
+import { addgoal } from "../actions";
 const CalculateCal = (props) => {
   const [life, setLife] = useState("sedentary");
   const [weight, setWeight] = useState(0);
@@ -21,7 +22,9 @@ const CalculateCal = (props) => {
             placeholder="weight (kg)"
             onChange={handleWeight}
             min="0"
+            step="any"
           />
+          <button onClick={addGoal}>Done</button>
         </div>
       );
     } else if (props.bmi >= 18 && props.bmi < 25) {
@@ -32,7 +35,9 @@ const CalculateCal = (props) => {
             type="number"
             placeholder="weight (kg)"
             onChange={handleWeight}
+            step="any"
           />
+          <button onClick={addGoal}>Done</button>
         </div>
       );
     } else {
@@ -44,15 +49,20 @@ const CalculateCal = (props) => {
             placeholder="weight (kg)"
             onChange={handleWeight}
             max="0"
+            step="any"
           />
+          <button onClick={addGoal}>Done</button>
         </div>
       );
     }
   };
 
+  const addGoal = () => {
+    props.addgoal(weight);
+  };
+
   return (
     <div>
-      {weightOpt()}
       <label>
         Select Life style :
         <select onChange={handleSelect}>
@@ -61,9 +71,14 @@ const CalculateCal = (props) => {
           <option value="hardWord">Hard working</option>
         </select>
       </label>
-      <Food />
+      {weightOpt()}
     </div>
   );
 };
 
-export default CalculateCal;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return state;
+};
+
+export default connect(mapStateToProps, { addgoal })(CalculateCal);
