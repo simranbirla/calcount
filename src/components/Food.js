@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import edamam from "../api/edamam";
 
 const Food = () => {
   const [food, setFood] = useState();
@@ -8,21 +9,22 @@ const Food = () => {
   const [fat, setFat] = useState(0);
   const inRef = useRef();
 
-  const handleInput = (e) => {
+  const handleInput = async (e) => {
     setFood(e.target.value);
-    fetch(
-      `https://api.edamam.com/auto-complete?q=${e.target.value}&limit=10&app_id=675aa5b5&app_key=65440c93a52d65ea4be40091a66fac78`
-    )
-      .then((res) => res.json())
-      .then((data) => setList(data));
+    const res = await edamam.get("/auto-complete", {
+      params: { q: e.target.value, limit: "10" },
+    });
+    setList(res.data);
     optionList();
   };
 
   const optionList = () => {
     return (
       <div>
-        {list.map((li) => (
-          <p onClick={() => handleMap(li)}>{li}</p>
+        {list.map((li, index) => (
+          <p key={index} onClick={() => handleMap(li)}>
+            {li}
+          </p>
         ))}
       </div>
     );
@@ -30,22 +32,37 @@ const Food = () => {
 
   const handleMap = (item) => {
     setFood(item);
-    console.log(item);
+    //    console.log(item);
     inRef.current.value = item;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch(
+    /*  fetch(
       `https://api.edamam.com/api/food-database/v2/parser?ingr=${food}&app_id=675aa5b5&app_key=65440c93a52d65ea4be40091a66fac78`
     )
       .then((res) => res.json())
-      .then((data) => setParse(data.hints));
-    fetch(
+      .then((data) => setParse(data.hints));*/
+
+    const res = await edamam.get(
+      "/api/food-database/v2/parser?app_id=675aa5b5&app_key=65440c93a52d65ea4be40091a66fac78",
+      {
+        params: { ingr: food },
+      }
+    );
+    setParse(res.data.hints);
+
+    const res2 = await edamam.get(
+      "/search?app_id=900da95e&app_key=40698503668e0bb3897581f4766d77f9",
+      { params: { q: food } }
+    );
+    setOptions(res2.data.hits);
+    console.log(res2.data.hits);
+    /* fetch(
       `https://api.edamam.com/search?app_id=900da95e&app_key=40698503668e0bb3897581f4766d77f9&q=${food}`
     )
       .then((result) => result.json())
-      .then((dat) => setOptions(dat.hits));
+      .then((dat) => setOptions(dat.hits));*/
   };
 
   const List = () => {
@@ -76,8 +93,8 @@ const Food = () => {
           onChange={handleInput}
           ref={inRef}
         />
-        {optionList()}
         <button>Go</button>
+        {optionList()}
       </form>
       {List()}
     </div>
