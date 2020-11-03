@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react";
+import Listfood from "./Listfood";
+import ListRecepies from "./ListRecepies";
 import edamam from "../api/edamam";
 
 const Food = () => {
@@ -65,23 +67,6 @@ const Food = () => {
       .then((dat) => setOptions(dat.hits));*/
   };
 
-  const List = () => {
-    return (
-      <div>
-        {parse.map((item) => {
-          return (
-            <div
-              onClick={() => setFat(fat + item.food.nutrients.FAT.toFixed(2))}
-            >
-              {item.food.label}
-              <p>{item.food.nutrients.FAT}</p>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
   return (
     <div>
       <h2>FAT:{fat}</h2>
@@ -96,7 +81,8 @@ const Food = () => {
         <button>Go</button>
         {optionList()}
       </form>
-      {List()}
+      <Listfood foodlist={parse} />
+      <ListRecepies food={options} />
     </div>
   );
 };
