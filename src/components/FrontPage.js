@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import AddWater from "./AddWater";
 const FrontPage = (props) => {
   return (
     <div>

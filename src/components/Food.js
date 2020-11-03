@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react";
+import { connect } from "react-redux";
+
 import Listfood from "./Listfood";
 import ListRecepies from "./ListRecepies";
 import edamam from "../api/edamam";
 
-const Food = () => {
+const Food = (props) => {
   const [food, setFood] = useState();
   const [list, setList] = useState([]);
   const [options, setOptions] = useState([]);
@@ -69,7 +71,7 @@ const Food = () => {
 
   return (
     <div>
-      <h2>FAT:{fat}</h2>
+      <h2>FAT:{props.nutrients.fat}</h2>
       <p>What did you have for breakfast?</p>
       <form onSubmit={handleSubmit}>
         <input
@@ -87,4 +89,8 @@ const Food = () => {
   );
 };
 
-export default Food;
+const mapStateToProps = (state, ownProps) => {
+  return { nutrients: state.nutrients };
+};
+
+export default connect(mapStateToProps)(Food);

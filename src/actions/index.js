@@ -21,3 +21,7 @@ export const addHeight = (height) => {
 export const addgoal = (goal) => {
   return { type: "ADD_GOAL", payload: goal };
 };
+
+export const addfat = (fat) => {
+  return { type: "ADD_FAT", payload: fat };
+};
