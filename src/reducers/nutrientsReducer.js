@@ -2,6 +2,7 @@ const INITIAL_STATE = {
   fat: 0,
   carbs: 0,
   protiens: 0,
+  exercise: 0,
 };
 
 const nutrientsReducer = (state = INITIAL_STATE, action) => {
@@ -14,6 +15,8 @@ const nutrientsReducer = (state = INITIAL_STATE, action) => {
       return { ...state, carbs: state.carbs + action.payload };
     case "ADD_PROTIEN":
       return { ...state, protiens: state.protiens + action.payload };
+    case "ADD_EXERCISE":
+      return { ...state, exercise: state.exercise + action.payload };
     default:
       return state;
   }

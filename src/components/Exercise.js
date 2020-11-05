@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import exercise from "../api/exercise";
-
+import { addexerciseCal } from "../actions";
 const Exercise = (props) => {
   const [exercises, setExercises] = useState("");
   const [results, setResults] = useState([]);
@@ -13,7 +13,7 @@ const Exercise = (props) => {
   const handleButton = async () => {
     const res = await exercise.post("/natural/exercise", {
       query: exercises,
-      gender: "female",
+      age: props.body.age,
     });
     console.log(res.data);
     setResults(res.data.exercises);
@@ -22,6 +22,7 @@ const Exercise = (props) => {
       0
     );
     setCalburn(t);
+    props.addexerciseCal(t);
   };
 
   return (
@@ -56,4 +57,4 @@ const mapStateToProps = (state) => {
   return { body: state.body };
 };
 
-export default connect(mapStateToProps, {})(Exercise);
+export default connect(mapStateToProps, { addexerciseCal })(Exercise);

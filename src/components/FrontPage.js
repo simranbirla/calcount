@@ -10,14 +10,15 @@ const FrontPage = (props) => {
       <p>
         GOAL IS {parseFloat(props.body.weight) + parseFloat(props.body.goal)}kg
       </p>
-      <p>Total cal intake</p>
+      <p>Age is :{props.body.age}</p>
+      <p>Total cal intake : {props.nutrients.exercise}</p>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   console.log(state);
-  return { body: state.body };
+  return { body: state.body, nutrients: state.nutrients };
 };
 
 export default connect(mapStateToProps)(FrontPage);

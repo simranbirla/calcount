@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addBMI, addWeight, addHeight } from "../actions";
+import { addBMI, addWeight, addHeight, addAge } from "../actions";
 import { Link } from "react-router-dom";
 
 import CalculateCal from "./CalulateCal";
@@ -21,6 +21,7 @@ const CalBMI = (props) => {
     props.addBMI(bmival.toFixed(2));
     props.addHeight(height);
     props.addWeight(weight);
+    props.addAge(age);
   };
 
   const showBMI = () => {
@@ -36,7 +37,7 @@ const CalBMI = (props) => {
   const handleInput = (e, type) => {
     if (type === "height") {
       setHeight(e.target.value);
-    } else if (type === "wight") {
+    } else if (type === "weight") {
       setWeight(e.target.value);
     } else {
       setAge(e.target.value);
@@ -95,6 +96,9 @@ const mapStatetoProps = (state) => {
   return state;
 };
 
-export default connect(mapStatetoProps, { addBMI, addHeight, addWeight })(
-  CalBMI
-);
+export default connect(mapStatetoProps, {
+  addBMI,
+  addHeight,
+  addWeight,
+  addAge,
+})(CalBMI);
