@@ -11,7 +11,9 @@ const FrontPage = (props) => {
         GOAL IS {parseFloat(props.body.weight) + parseFloat(props.body.goal)}kg
       </p>
       <p>Age is :{props.body.age}</p>
-      <p>Total cal intake : {props.nutrients.exercise}</p>
+      {props.body.gender ? <p>Gender is:{props.body.gender}</p> : false}
+      <p>Total cal intake : </p>
+      <p>Total calories burned :{props.nutrients.exercise}</p>
     </div>
   );
 };

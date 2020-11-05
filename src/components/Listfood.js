@@ -1,15 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addfat, removefat } from "../actions/index";
+import {
+  addfat,
+  removefat,
+  addcal,
+  addcarbs,
+  addprotein,
+  removecal,
+  removecarbs,
+  removeprotein,
+} from "../actions/index";
 
 const Listfood = (props) => {
   console.log(props.foodlist);
-  const addNutrient = (fat) => {
+  const addNutrient = (fat, cal, carbs, protein) => {
     props.addfat(parseInt(fat));
+    props.addcal(parseInt(cal));
+    props.addcarbs(parseInt(carbs));
+    props.addprotein(parseInt(protein));
   };
 
-  const removeNutrients = (fat) => {
+  const removeNutrients = (fat, cal, carbs, protein) => {
     props.removefat(parseInt(fat));
+    props.removecal(parseInt(cal));
+    props.removecarbs(parseInt(carbs));
+    props.removeprotein(parseInt(protein));
   };
 
   return (
@@ -19,14 +34,24 @@ const Listfood = (props) => {
           <div>
             <button
               onClick={() =>
-                addNutrient(parseInt(item.food.nutrients.FAT).toFixed(2))
+                addNutrient(
+                  parseInt(item.food.nutrients.FAT),
+                  parseInt(item.food.nutrients.ENERC_KCAL),
+                  parseInt(item.food.nutrients.CHOCDF),
+                  parseInt(item.food.nutrients.PROCNT)
+                )
               }
             >
               +
             </button>
             <button
               onClick={() =>
-                removeNutrients(parseInt(item.food.nutrients.FAT).toFixed(2))
+                removeNutrients(
+                  parseInt(item.food.nutrients.FAT),
+                  parseInt(item.food.nutrients.ENERC_KCAL),
+                  parseInt(item.food.nutrients.CHOCDF),
+                  parseInt(item.food.nutrients.PROCNT)
+                )
               }
             >
               ---
@@ -53,4 +78,13 @@ const mapStateToProps = (state) => {
   return state;
 };
 
-export default connect(mapStateToProps, { addfat, removefat })(Listfood);
+export default connect(mapStateToProps, {
+  addfat,
+  removefat,
+  addcal,
+  addcarbs,
+  addprotein,
+  removecal,
+  removecarbs,
+  removeprotein,
+})(Listfood);

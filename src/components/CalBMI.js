@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addBMI, addWeight, addHeight, addAge } from "../actions";
+import { addBMI, addWeight, addHeight, addAge, addGender } from "../actions";
 import { Link } from "react-router-dom";
 
 import CalculateCal from "./CalulateCal";
@@ -22,6 +22,7 @@ const CalBMI = (props) => {
     props.addHeight(height);
     props.addWeight(weight);
     props.addAge(age);
+    props.addGender(gender);
   };
 
   const showBMI = () => {
@@ -53,7 +54,7 @@ const CalBMI = (props) => {
             type="number"
             placeholder="kilograms"
             step="any"
-            onChange={(e) => handleInput(e, "weigth")}
+            onChange={(e) => handleInput(e, "weight")}
           />
         </label>
         <label>
@@ -73,6 +74,32 @@ const CalBMI = (props) => {
             onChange={(e) => handleInput(e, "age")}
           />
         </label>
+        <input
+          type="radio"
+          id="male"
+          name="gender"
+          value="male"
+          onClick={(e) => setGender(e.target.value)}
+        />
+        <label for="male">Male</label>
+        <input
+          type="radio"
+          id="female"
+          name="gender"
+          value="female"
+          onClick={(e) => setGender(e.target.value)}
+        />
+        <label label for="female">
+          Female
+        </label>
+        <input
+          type="radio"
+          id="other"
+          name="gender"
+          value="other"
+          onClick={(e) => setGender(e.target.value)}
+        />
+        <label for="other">Other</label>
         <button type="submit" onClick={calculateBMI}>
           Calculate
         </button>
@@ -101,4 +128,5 @@ export default connect(mapStatetoProps, {
   addHeight,
   addWeight,
   addAge,
+  addGender,
 })(CalBMI);

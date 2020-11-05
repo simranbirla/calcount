@@ -25,6 +25,8 @@ const bodyReducer = (state = INITIAL_STATE, action) => {
       return { ...state, goal: action.payload };
     case "ADD_AGE":
       return { ...state, age: action.payload };
+    case "ADD_GENDER":
+      return { ...state, gender: action.payload };
     default:
       return state;
   }

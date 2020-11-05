@@ -19,7 +19,6 @@ const Food = (props) => {
       params: { q: e.target.value, limit: "10" },
     });
     setList(res.data);
-    optionList();
   };
 
   const optionList = () => {
@@ -47,7 +46,7 @@ const Food = (props) => {
     )
       .then((res) => res.json())
       .then((data) => setParse(data.hints));*/
-
+    setList([]);
     const res = await edamam.get(
       "/api/food-database/v2/parser?app_id=675aa5b5&app_key=65440c93a52d65ea4be40091a66fac78",
       {
@@ -88,7 +87,7 @@ const Food = (props) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return { nutrients: state.nutrients };
 };
 
