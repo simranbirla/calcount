@@ -1,23 +1,46 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addfat } from "../actions/index";
+import { addfat, removefat } from "../actions/index";
 
 const Listfood = (props) => {
+  console.log(props.foodlist);
   const addNutrient = (fat) => {
-    props.addfat(parseFloat(fat));
+    props.addfat(parseInt(fat));
+  };
+
+  const removeNutrients = (fat) => {
+    props.removefat(parseInt(fat));
   };
 
   return (
     <div>
       {props.foodlist.map((item) => {
         return (
-          <div
-            onClick={() =>
-              addNutrient(parseFloat(item.food.nutrients.FAT).toFixed(2))
-            }
-          >
+          <div>
+            <button
+              onClick={() =>
+                addNutrient(parseInt(item.food.nutrients.FAT).toFixed(2))
+              }
+            >
+              +
+            </button>
+            <button
+              onClick={() =>
+                removeNutrients(parseInt(item.food.nutrients.FAT).toFixed(2))
+              }
+            >
+              ---
+            </button>
+            {item.food.image ? (
+              <img src={item.food.image} alt={item.food.label} />
+            ) : (
+              false
+            )}
             {item.food.label}
-            <p>{parseFloat(item.food.nutrients.FAT).toFixed(2)}</p>
+            <h3>{parseInt(item.food.nutrients.ENERC_KCAL)}kcal</h3>
+            <p>{parseInt(item.food.nutrients.FAT)}g</p>
+            <p>{parseInt(item.food.nutrients.CHOCDF)}g</p>
+            <p>{parseInt(item.food.nutrients.PROCNT)}g</p>
           </div>
         );
       })}
@@ -26,8 +49,8 @@ const Listfood = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  //console.log(state);
   return state;
 };
 
-export default connect(mapStateToProps, { addfat })(Listfood);
+export default connect(mapStateToProps, { addfat, removefat })(Listfood);

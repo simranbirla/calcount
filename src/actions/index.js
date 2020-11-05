@@ -25,3 +25,7 @@ export const addgoal = (goal) => {
 export const addfat = (fat) => {
   return { type: "ADD_FAT", payload: fat };
 };
+
+export const removefat = (fat) => {
+  return { type: "REMOVE_FAT", payload: fat };
+};
