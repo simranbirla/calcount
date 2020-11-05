@@ -10,6 +10,8 @@ const CalBMI = (props) => {
   const [weight, setWeight] = useState(0);
   const [bmi, setBMI] = useState(0);
   const [show, setShow] = useState(false);
+  const [age, setAge] = useState(0);
+  const [gender, setGender] = useState();
 
   const calculateBMI = (e) => {
     e.preventDefault();
@@ -34,8 +36,10 @@ const CalBMI = (props) => {
   const handleInput = (e, type) => {
     if (type === "height") {
       setHeight(e.target.value);
-    } else {
+    } else if (type === "wight") {
       setWeight(e.target.value);
+    } else {
+      setAge(e.target.value);
     }
   };
 
@@ -58,6 +62,14 @@ const CalBMI = (props) => {
             placeholder="meters"
             step="any"
             onChange={(e) => handleInput(e, "height")}
+          />
+        </label>
+        <label>
+          Enter Age:
+          <input
+            type="number"
+            placeholder="Enter age"
+            onChange={(e) => handleInput(e, "age")}
           />
         </label>
         <button type="submit" onClick={calculateBMI}>

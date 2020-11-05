@@ -71,7 +71,7 @@ const Food = (props) => {
   return (
     <div>
       <h2>FAT:{props.nutrients.fat}</h2>
-      <p>What did you have for breakfast?</p>
+      <p>Search for your meal</p>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

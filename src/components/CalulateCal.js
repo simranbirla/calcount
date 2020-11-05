@@ -4,6 +4,7 @@ import { addgoal } from "../actions";
 const CalculateCal = (props) => {
   const [life, setLife] = useState("sedentary");
   const [weight, setWeight] = useState(0);
+
   const handleSelect = (e) => {
     setLife(e.target.value);
   };
