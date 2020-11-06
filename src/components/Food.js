@@ -10,7 +10,6 @@ const Food = (props) => {
   const [list, setList] = useState([]);
   const [options, setOptions] = useState([]);
   const [parse, setParse] = useState([]);
-  const [fat, setFat] = useState(0);
   const inRef = useRef();
 
   const handleInput = async (e) => {
@@ -82,7 +81,6 @@ const Food = (props) => {
         {optionList()}
       </form>
       <Listfood foodlist={parse} />
-      <ListRecepies food={options} />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import FrontPage from "./FrontPage";
 import Food from "./Food";
 import Exercise from "./Exercise";
 import Header from "./Header";
+import Recipe from "./Recipe";
 const App = () => {
   return (
     <div>
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/" exact component={CalBMI} />
           <Route path="/exercise" component={Exercise} />
           <Route path="/food" component={Food} />
+          <Route path="/recipes" component={Recipe} />
         </Switch>
       </BrowserRouter>
     </div>
