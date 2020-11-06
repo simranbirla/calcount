@@ -10,6 +10,7 @@ import {
   removecarbs,
   removeprotein,
   addfoodLabel,
+  removefoodLabel,
 } from "../actions/index";
 
 const Listfood = (props) => {
@@ -28,6 +29,7 @@ const Listfood = (props) => {
       props.removecal(parseInt(cal));
       props.removecarbs(parseInt(carbs));
       props.removeprotein(parseInt(protein));
+      props.removefoodLabel(foodId);
     }
   };
 
@@ -104,4 +106,5 @@ export default connect(mapStateToProps, {
   removecarbs,
   removeprotein,
   addfoodLabel,
+  removefoodLabel,
 })(Listfood);

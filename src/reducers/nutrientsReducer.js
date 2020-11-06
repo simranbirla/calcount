@@ -29,6 +29,13 @@ const nutrientsReducer = (state = INITIAL_STATE, action) => {
       return { ...state, cal: state.cal - action.payload };
     case "ADD_FOODLABEL":
       return { ...state, food_label: [...state.food_label, action.payload] };
+    case "REMOVE_FOODLABEL":
+      const index = state.food_label.indexOf(action.payload);
+      const new_arr = state.food_label.filter((val, ind) => ind != index);
+      return {
+        ...state,
+        food_label: [...new_arr],
+      };
     default:
       return state;
   }

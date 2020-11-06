@@ -69,3 +69,7 @@ export const removeprotein = (protein) => {
 export const addfoodLabel = (label) => {
   return { type: "ADD_FOODLABEL", payload: label };
 };
+
+export const removefoodLabel = (label) => {
+  return { type: "REMOVE_FOODLABEL", payload: label };
+};

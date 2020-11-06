@@ -1,8 +1,7 @@
 import React from "react";
-import Listfood from "./Listfood";
 
 const ListRecepies = ({ food }) => {
-  // console.log(food);
+  console.log(food);
   return (
     <div>
       <h1>Recipes</h1>
