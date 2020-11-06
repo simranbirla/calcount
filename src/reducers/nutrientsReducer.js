@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   protiens: 0,
   exercise: 0,
   cal: 0,
+  food_label: [],
 };
 
 const nutrientsReducer = (state = INITIAL_STATE, action) => {
@@ -26,6 +27,8 @@ const nutrientsReducer = (state = INITIAL_STATE, action) => {
       return { ...state, cal: state.cal + action.payload };
     case "REMOVE_CALORIES":
       return { ...state, cal: state.cal - action.payload };
+    case "ADD_FOODLABEL":
+      return { ...state, food_label: [...state.food_label, action.payload] };
     default:
       return state;
   }

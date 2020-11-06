@@ -65,3 +65,7 @@ export const removecarbs = (carb) => {
 export const removeprotein = (protein) => {
   return { type: "REMOVE_PROTEIN", payload: protein };
 };
+
+export const addfoodLabel = (label) => {
+  return { type: "ADD_FOODLABEL", payload: label };
+};
