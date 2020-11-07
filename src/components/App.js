@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import AddWater from "./AddWater";
 import CalBMI from "./CalBMI";
 import FrontPage from "./FrontPage";

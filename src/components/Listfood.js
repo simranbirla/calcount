@@ -14,7 +14,7 @@ import {
 } from "../actions/index";
 
 const Listfood = (props) => {
-  // console.log(props.foodlist);
+  console.log(props.foodlist);
   const addNutrient = (fat, cal, carbs, protein, foodId) => {
     props.addfat(parseInt(fat));
     props.addcal(parseInt(cal));
@@ -63,7 +63,7 @@ const Listfood = (props) => {
                   )
                 }
               >
-                ---
+                X
               </button>
             </div>
             <div>
@@ -71,15 +71,29 @@ const Listfood = (props) => {
                 <img
                   src={item.food.image}
                   alt={item.food.label}
-                  style={{ width: "200px", height: "200px" }}
+                  style={{ width: "100px", height: "100px" }}
                 />
               ) : (
-                false
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT7HriDg-QYv9F-jUf8AMYdWpEycWpJIqx-OQ&usqp=CAU"
+                  alt={item.food.label}
+                  style={{ width: "100px", height: "100px" }}
+                />
               )}
               <h3>{item.food.label}</h3>
             </div>
+            {item.food.foodContentsLabel ? (
+              <div>
+                {item.food.foodContentsLabel.split(";").map((val) => (
+                  <span>{val} </span>
+                ))}
+              </div>
+            ) : (
+              false
+            )}
             <div>
               <h4>{parseInt(item.food.nutrients.ENERC_KCAL)}kcal</h4>
+              <p>Qunatity : 100 g</p>
               <p>{parseInt(item.food.nutrients.FAT)}g</p>
               <p>{parseInt(item.food.nutrients.CHOCDF)}g</p>
               <p>{parseInt(item.food.nutrients.PROCNT)}g</p>

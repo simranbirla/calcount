@@ -2,13 +2,11 @@ import React, { useState, useRef } from "react";
 import { connect } from "react-redux";
 
 import Listfood from "./Listfood";
-import ListRecepies from "./ListRecepies";
 import edamam from "../api/edamam";
 
 const Food = (props) => {
   const [food, setFood] = useState();
   const [list, setList] = useState([]);
-  const [options, setOptions] = useState([]);
   const [parse, setParse] = useState([]);
   const inRef = useRef();
 
@@ -54,7 +52,7 @@ const Food = (props) => {
     );
     setParse(res.data.hints);
 
-    const res2 = await edamam.get(
+    /* const res2 = await edamam.get(
       "/search?app_id=900da95e&app_key=40698503668e0bb3897581f4766d77f9",
       { params: { q: food } }
     );
