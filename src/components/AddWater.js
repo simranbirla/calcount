@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addWater } from "../actions";
+import water from "../styling/water-glass.svg";
+import "../styling/AddWater.css";
+
 const AddWater = (props) => {
-  console.log(props);
+  const [show, setShow] = useState(false);
+
   return (
-    <div>
-      <h3>ADD A GLASS OF WATER</h3>
-      <button onClick={props.addWater}>+</button>
-      <div>{props.water}/8</div>
+    <div className="water">
+      <div
+        className={show ? "water-img" : "water-img close"}
+        onClick={() => setShow(!show)}
+      >
+        <img src={water} alt="glass of water" className="water-img " />
+      </div>
+
+      <div className={show ? "water__main show" : "water__main"}>
+        <button onClick={props.addWater}>
+          <h3>
+            <i className="fas fa-plus-circle"></i>
+          </h3>
+        </button>
+        <div className="water__glasses">{props.water}/8</div>
+      </div>
     </div>
   );
 };
