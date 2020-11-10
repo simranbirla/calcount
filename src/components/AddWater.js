@@ -10,7 +10,7 @@ const AddWater = (props) => {
   return (
     <div className="water">
       <div
-        className={show ? "water-img" : "water-img close"}
+        className={show ? "water-img close" : "water-img"}
         onClick={() => setShow(!show)}
       >
         <img src={water} alt="glass of water" className="water-img " />

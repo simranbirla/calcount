@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addBMI, addWeight, addHeight, addAge, addGender } from "../actions";
-import { Link } from "react-router-dom";
-
+import "../styling/CalBMI.css";
 import CalculateCal from "./CalulateCal";
 
 const CalBMI = (props) => {
@@ -46,66 +45,69 @@ const CalBMI = (props) => {
   };
 
   return (
-    <div>
-      <form>
+    <div className="calbmi">
+      <form onSubmit={calculateBMI}>
         <label>
-          Enter weight (kg){" "}
+          <p> Enter weight (kg)</p>
           <input
             type="number"
             placeholder="kilograms"
             step="any"
             onChange={(e) => handleInput(e, "weight")}
+            required
           />
         </label>
         <label>
-          Enter height (m){" "}
+          <p>Enter height (m)</p>
           <input
             type="number"
             placeholder="meters"
             step="any"
+            required
             onChange={(e) => handleInput(e, "height")}
           />
         </label>
         <label>
-          Enter Age:
+          <p>Enter Age:(yrs)</p>
           <input
             type="number"
             placeholder="Enter age"
             onChange={(e) => handleInput(e, "age")}
+            required
           />
         </label>
-        <input
-          type="radio"
-          id="male"
-          name="gender"
-          value="male"
-          onClick={(e) => setGender(e.target.value)}
-        />
-        <label for="male">Male</label>
-        <input
-          type="radio"
-          id="female"
-          name="gender"
-          value="female"
-          onClick={(e) => setGender(e.target.value)}
-        />
-        <label label for="female">
-          Female
-        </label>
-        <input
-          type="radio"
-          id="other"
-          name="gender"
-          value="other"
-          onClick={(e) => setGender(e.target.value)}
-        />
-        <label for="other">Other</label>
-        <button type="submit" onClick={calculateBMI}>
-          Calculate
-        </button>
+        <div className="calbmi__radio">
+          <input
+            type="radio"
+            id="male"
+            name="gender"
+            value="male"
+            onClick={(e) => setGender(e.target.value)}
+          />
+          <label for="male">Male</label>
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+            onClick={(e) => setGender(e.target.value)}
+          />
+          <label label for="female">
+            Female
+          </label>
+          <input
+            type="radio"
+            id="other"
+            name="gender"
+            value="other"
+            onClick={(e) => setGender(e.target.value)}
+          />
+          <label for="other">Other</label>
+        </div>
+        <button type="submit">Calculate</button>
       </form>
       {show ? (
-        <div>
+        <div className="calbmi__bmi">
           <h1>BMI IS :{bmi}</h1>
           {showBMI()}
           <CalculateCal bmi={bmi} />
@@ -113,7 +115,6 @@ const CalBMI = (props) => {
       ) : (
         false
       )}
-      <Link to="/frontpage">FRONTPAGE</Link>
     </div>
   );
 };

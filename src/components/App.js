@@ -7,9 +7,10 @@ import Food from "./Food";
 import Exercise from "./Exercise";
 import Header from "./Header";
 import Recipe from "./Recipe";
+import "../styling/index.css";
 const App = () => {
   return (
-    <div>
+    <div className="app">
       <AddWater />
       <BrowserRouter>
         <Header />

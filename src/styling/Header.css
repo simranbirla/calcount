@@ -31,6 +31,10 @@
   display: block;
 }
 
+.header-elements:hover {
+  color: #f4a803;
+}
+
 @keyframes line {
   0% {
     transform: translateX(-50%);

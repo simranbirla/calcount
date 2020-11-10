@@ -19,6 +19,11 @@
     0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.water-img.close img {
+  transform: translateY(0%);
+  animation-play-state: paused;
+}
+
 @keyframes bounce {
   0% {
     transform: translateY(50%);

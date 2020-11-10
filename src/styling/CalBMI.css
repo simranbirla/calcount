@@ -1,0 +1,62 @@
+.calbmi form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+  background-color: rgb(219, 255, 195);
+  width: 60%;
+  padding: 20px;
+  font-size: 1.3em;
+  row-gap: 20px;
+  box-shadow: 5px 5px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.calbmi form label {
+  width: 80%;
+  text-align: center;
+  display: flex;
+}
+
+.calbmi form label p {
+  display: block;
+  width: 30%;
+}
+
+input[type="number"] {
+  padding: 10px 10px;
+  font-size: 1em;
+  border: none;
+  width: 60%;
+  border-radius: 10px;
+  margin: 0 10px 30px 10px;
+}
+
+input[type="number"]:focus {
+  outline: 2px solid rgb(172, 226, 235);
+}
+
+.calbmi__radio {
+  display: flex;
+  column-gap: 20px;
+  position: relative;
+}
+
+.calbmi__radio input[type="radio"] {
+  cursor: pointer;
+}
+
+button {
+  background-color: #f4a803;
+  border: none;
+  padding: 10px 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 20px;
+  color: antiquewhite;
+}
+
+button:hover {
+  color: white;
+}
