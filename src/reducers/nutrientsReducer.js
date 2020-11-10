@@ -22,7 +22,7 @@ const nutrientsReducer = (state = INITIAL_STATE, action) => {
     case "REMOVE_PROTIEN":
       return { ...state, protiens: state.protiens - action.payload };
     case "ADD_EXERCISE":
-      return { ...state, exercise: state.exercise + action.payload };
+      return { ...state, exercise: action.payload };
     case "ADD_CALORIES":
       return { ...state, cal: state.cal + action.payload };
     case "REMOVE_CALORIES":
