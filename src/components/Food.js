@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import Listfood from "./Listfood";
 import edamam from "../api/edamam";
-
+import "../styling/Meal.css";
 const Food = (props) => {
   const [food, setFood] = useState();
   const [list, setList] = useState([]);
@@ -20,7 +20,7 @@ const Food = (props) => {
 
   const optionList = () => {
     return (
-      <div>
+      <div className="meal__auto">
         {list.map((li, index) => (
           <p key={index} onClick={() => handleMap(li)}>
             {li}
@@ -65,19 +65,20 @@ const Food = (props) => {
   };
 
   return (
-    <div>
-      <h2>FAT:{props.nutrients.fat}</h2>
-      <p>Search for your meal</p>
+    <div className="meal">
+      <h2>Search for your meal</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="add"
+          placeholder="Enter your meal"
           onChange={handleInput}
           ref={inRef}
         />
-        <button>Go</button>
-        {optionList()}
+        <button>
+          Search <i className="fas fa-search"></i>
+        </button>
       </form>
+      {optionList()}
       <Listfood foodlist={parse} />
     </div>
   );
