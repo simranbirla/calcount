@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import "../styling/Foodlist.css";
 import {
   addfat,
   removefat,
@@ -34,39 +35,11 @@ const Listfood = (props) => {
   };
 
   return (
-    <div>
+    <div className="foodlist">
       {props.foodlist.map((item) => {
         return (
-          <div>
-            <div>
-              <button
-                onClick={() =>
-                  addNutrient(
-                    parseInt(item.food.nutrients.FAT),
-                    parseInt(item.food.nutrients.ENERC_KCAL),
-                    parseInt(item.food.nutrients.CHOCDF),
-                    parseInt(item.food.nutrients.PROCNT),
-                    item.food.foodId
-                  )
-                }
-              >
-                +
-              </button>
-              <button
-                onClick={() =>
-                  removeNutrients(
-                    parseInt(item.food.nutrients.FAT),
-                    parseInt(item.food.nutrients.ENERC_KCAL),
-                    parseInt(item.food.nutrients.CHOCDF),
-                    parseInt(item.food.nutrients.PROCNT),
-                    item.food.foodId
-                  )
-                }
-              >
-                X
-              </button>
-            </div>
-            <div>
+          <div className="foodlist__contain">
+            <div className="foodlist__img">
               {item.food.image ? (
                 <img
                   src={item.food.image}
@@ -81,22 +54,48 @@ const Listfood = (props) => {
                 />
               )}
               <h3>{item.food.label}</h3>
+              <p>Quantity : 100 g</p>
             </div>
             {item.food.foodContentsLabel ? (
-              <div>
+              <div className="foodlist__label">
                 {item.food.foodContentsLabel.split(";").map((val) => (
                   <span>{val} </span>
                 ))}
               </div>
-            ) : (
-              false
-            )}
-            <div>
+            ) : null}
+            <div className="foodlist__nutrients">
               <h4>{parseInt(item.food.nutrients.ENERC_KCAL)}kcal</h4>
-              <p>Qunatity : 100 g</p>
-              <p>{parseInt(item.food.nutrients.FAT)}g</p>
-              <p>{parseInt(item.food.nutrients.CHOCDF)}g</p>
-              <p>{parseInt(item.food.nutrients.PROCNT)}g</p>
+              <p>FAT :: {parseInt(item.food.nutrients.FAT)}g</p>
+              <p>Carbs :: {parseInt(item.food.nutrients.CHOCDF)}g</p>
+              <p>Protien :: {parseInt(item.food.nutrients.PROCNT)}g</p>
+            </div>
+            <div className="foodlist__buttons">
+              <button
+                onClick={() =>
+                  addNutrient(
+                    parseInt(item.food.nutrients.FAT),
+                    parseInt(item.food.nutrients.ENERC_KCAL),
+                    parseInt(item.food.nutrients.CHOCDF),
+                    parseInt(item.food.nutrients.PROCNT),
+                    item.food.foodId
+                  )
+                }
+              >
+                <i className="fas fa-plus"></i>
+              </button>
+              <button
+                onClick={() =>
+                  removeNutrients(
+                    parseInt(item.food.nutrients.FAT),
+                    parseInt(item.food.nutrients.ENERC_KCAL),
+                    parseInt(item.food.nutrients.CHOCDF),
+                    parseInt(item.food.nutrients.PROCNT),
+                    item.food.foodId
+                  )
+                }
+              >
+                <i className="fas fa-minus-circle"></i>
+              </button>
             </div>
           </div>
         );
