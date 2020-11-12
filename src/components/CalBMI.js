@@ -26,11 +26,42 @@ const CalBMI = (props) => {
 
   const showBMI = () => {
     if (bmi < 18.5) {
-      return <div style={{ backgroundColor: "red" }}>LESSS</div>;
+      return (
+        <div
+          className="calbmi__show"
+          style={{
+            backgroundImage:
+              " linear-gradient(90deg, rgba(218,35,0,1) 8%, rgba(245,143,123,1) 48%, rgba(255,255,255,1) 100%)",
+          }}
+        >
+          LESS
+          <p>{bmi}</p>
+        </div>
+      );
     } else if (bmi >= 18.5 && bmi <= 25) {
-      return <div style={{ backgroundColor: "yellowgreen" }}>NORMAL</div>;
+      return (
+        <div
+          className="calbmi__show"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, rgba(64,218,0,1) 8%, rgba(165,245,123,1) 48%, rgba(255,255,255,1) 100%)",
+          }}
+        >
+          NORMAL<p>{bmi}</p>
+        </div>
+      );
     } else {
-      return <div style={{ backgroundColor: "yellow" }}>MORE</div>;
+      return (
+        <div
+          className="calbmi__show"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, rgba(218,214,0,1) 8%, rgba(245,235,123,1) 48%, rgba(255,255,255,1) 100%)",
+          }}
+        >
+          MORE<p>{bmi}</p>
+        </div>
+      );
     }
   };
 
@@ -45,76 +76,80 @@ const CalBMI = (props) => {
   };
 
   return (
-    <div className="calbmi">
-      <form onSubmit={calculateBMI}>
-        <label>
-          <p> Enter weight (kg)</p>
-          <input
-            type="number"
-            placeholder="kilograms"
-            step="any"
-            onChange={(e) => handleInput(e, "weight")}
-            required
-          />
-        </label>
-        <label>
-          <p>Enter height (m)</p>
-          <input
-            type="number"
-            placeholder="meters"
-            step="any"
-            required
-            onChange={(e) => handleInput(e, "height")}
-          />
-        </label>
-        <label>
-          <p>Enter Age:(yrs)</p>
-          <input
-            type="number"
-            placeholder="Enter age"
-            onChange={(e) => handleInput(e, "age")}
-            required
-          />
-        </label>
-        <div className="calbmi__radio">
-          <input
-            type="radio"
-            id="male"
-            name="gender"
-            value="male"
-            onClick={(e) => setGender(e.target.value)}
-          />
-          <label for="male">Male</label>
-          <input
-            type="radio"
-            id="female"
-            name="gender"
-            value="female"
-            onClick={(e) => setGender(e.target.value)}
-          />
-          <label label for="female">
-            Female
+    <div>
+      <div className="calbmi">
+        <form onSubmit={calculateBMI}>
+          <label>
+            <p> Enter weight (kg)</p>
+            <input
+              type="number"
+              placeholder="kilograms"
+              step="any"
+              onChange={(e) => handleInput(e, "weight")}
+              required
+            />
           </label>
-          <input
-            type="radio"
-            id="other"
-            name="gender"
-            value="other"
-            onClick={(e) => setGender(e.target.value)}
-          />
-          <label for="other">Other</label>
-        </div>
-        <button type="submit">Calculate</button>
-      </form>
-      {show ? (
-        <div className="calbmi__bmi">
-          <h1>BMI IS :{bmi}</h1>
-          {showBMI()}
-          <CalculateCal bmi={bmi} />
-        </div>
-      ) : (
-        false
-      )}
+          <label>
+            <p>Enter height (m)</p>
+            <input
+              type="number"
+              placeholder="meters"
+              step="any"
+              required
+              onChange={(e) => handleInput(e, "height")}
+            />
+          </label>
+          <label>
+            <p>Enter Age:(yrs)</p>
+            <input
+              type="number"
+              placeholder="Enter age"
+              onChange={(e) => handleInput(e, "age")}
+              required
+            />
+          </label>
+          <div className="calbmi__radio">
+            <input
+              type="radio"
+              id="male"
+              name="gender"
+              value="male"
+              onClick={(e) => setGender(e.target.value)}
+            />
+            <label for="male">Male</label>
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value="female"
+              onClick={(e) => setGender(e.target.value)}
+            />
+            <label label for="female">
+              Female
+            </label>
+            <input
+              type="radio"
+              id="other"
+              name="gender"
+              value="other"
+              onClick={(e) => setGender(e.target.value)}
+            />
+            <label for="other">Other</label>
+          </div>
+          <button type="submit">Calculate</button>
+        </form>
+        {show ? (
+          <div className="calbmi__bmi">
+            <h1>BMI IS</h1>
+            {showBMI()}
+            {
+              //<CalculateCal bmi={bmi} />
+            }
+          </div>
+        ) : (
+          false
+        )}
+      </div>
     </div>
   );
 };
