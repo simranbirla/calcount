@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+}
+
+.main__info {
+  background-color: rgb(219, 255, 195);
+  box-shadow: 5px 5px 2px 5px rgba(0, 0, 0, 0.5);
+  width: 40%;
+  margin: 40px 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.main__info p {
+  margin: 10px;
+  font-weight: 700;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.main__info p:hover {
+  color: orange;
+}

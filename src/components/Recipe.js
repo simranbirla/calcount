@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import edamam from "../api/edamam";
 import ListRecepies from "./ListRecepies";
+import "../styling/Recipe.css";
 const Recipe = () => {
   const [food, setFood] = useState();
   const [recipes, setRecipes] = useState([]);
@@ -20,11 +21,14 @@ const Recipe = () => {
   };
 
   return (
-    <div>
-      Recipes
-      <p>Search for your meal</p>
+    <div className="recipe">
+      <h2>What should you cook ?</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="add" onChange={handleInput} />
+        <input
+          type="text"
+          placeholder="Search for the recipe"
+          onChange={handleInput}
+        />
         <button>Go</button>
       </form>
       <ListRecepies food={recipes} />
