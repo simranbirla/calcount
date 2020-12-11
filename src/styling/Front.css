@@ -21,3 +21,33 @@
 .main__info p:hover {
   color: orange;
 }
+
+@media (max-width: 720px) {
+  .main {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .main__info p {
+    font-size: 1.4em;
+  }
+  .main__info {
+    margin: 40px auto 30px auto;
+    width: 80%;
+  }
+
+  .charts {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+}
+
+@media (max-width: 320px) {
+  .main__info p {
+    font-size: 1.13em;
+  }
+  .main__info {
+    margin-top: 50px;
+  }
+}
