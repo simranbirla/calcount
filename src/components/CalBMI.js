@@ -11,6 +11,7 @@ const CalBMI = (props) => {
   const [show, setShow] = useState(false);
   const [age, setAge] = useState(0);
   const [gender, setGender] = useState();
+  const [life, setLife] = useState("sedentary");
 
   const calculateBMI = (e) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ const CalBMI = (props) => {
               " linear-gradient(90deg, rgba(218,35,0,1) 8%, rgba(245,143,123,1) 48%, rgba(255,255,255,1) 100%)",
           }}
         >
-          LESS
+          Underweight
           <p>{bmi}</p>
         </div>
       );
@@ -59,7 +60,7 @@ const CalBMI = (props) => {
               "linear-gradient(90deg, rgba(218,214,0,1) 8%, rgba(245,235,123,1) 48%, rgba(255,255,255,1) 100%)",
           }}
         >
-          MORE<p>{bmi}</p>
+          Overweight<p>{bmi}</p>
         </div>
       );
     }
@@ -73,6 +74,10 @@ const CalBMI = (props) => {
     } else {
       setAge(e.target.value);
     }
+  };
+
+  const handleSelect = (e) => {
+    setLife(e.target.value);
   };
 
   return (
@@ -115,9 +120,11 @@ const CalBMI = (props) => {
               name="gender"
               value="male"
               onClick={(e) => setGender(e.target.value)}
+              required
             />
             <label for="male">Male</label>
             <input
+              required
               type="radio"
               id="female"
               name="gender"
@@ -128,6 +135,7 @@ const CalBMI = (props) => {
               Female
             </label>
             <input
+              required
               type="radio"
               id="other"
               name="gender"
@@ -136,15 +144,20 @@ const CalBMI = (props) => {
             />
             <label for="other">Other</label>
           </div>
+          <label>
+            Select Life style :
+            <select onChange={handleSelect}>
+              <option value="sedentary">Sedentary</option>
+              <option value="active">Active</option>
+            </select>
+          </label>
           <button type="submit">Calculate</button>
         </form>
         {show ? (
           <div className="calbmi__bmi">
             <h1>BMI IS</h1>
             {showBMI()}
-            {
-              //<CalculateCal bmi={bmi} />
-            }
+            {<CalculateCal bmi={bmi} life={life} weight={weight} />}
           </div>
         ) : (
           false
@@ -155,7 +168,6 @@ const CalBMI = (props) => {
 };
 
 const mapStatetoProps = (state) => {
-  console.log(state);
   return state;
 };
 

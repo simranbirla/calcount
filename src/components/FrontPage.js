@@ -8,15 +8,13 @@ const FrontPage = (props) => {
         <p>Weight :: {props.body.weight} kg </p>
         <p>Height :: {props.body.height} m</p>
         <p>BMI IS :: {props.body.bmi}</p>
-        <p>
-          GOAL IS ::{" "}
-          {parseFloat(props.body.weight) + parseFloat(props.body.goal)}
-          kg
-        </p>
         <p>Age is :: {props.body.age} yrs</p>
         {props.body.gender ? <p>Gender is :: {props.body.gender}</p> : false}
-        <p>Total cal intake :: </p>
-        <p>Total calories burned :: {props.nutrients.exercise}</p>
+        <p>Total cal intake :: {props.body.calIntake}</p>
+        <p>
+          Total calories burned :: {props.nutrients.exercise}/
+          {props.body.burnCal}
+        </p>
       </div>
       <div className="charts"></div>
     </div>

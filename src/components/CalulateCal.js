@@ -1,78 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { addgoal } from "../actions";
-const CalculateCal = (props) => {
-  const [life, setLife] = useState("sedentary");
-  const [weight, setWeight] = useState(0);
+import { addCalIntake, addBurnCal } from "../actions";
 
-  const handleSelect = (e) => {
-    setLife(e.target.value);
-  };
+const CalculateCal = ({ bmi, weight, life, addBurnCal, addCalIntake }) => {
+  const [cal, setCal] = useState(0);
+  const [burn, setBurn] = useState(0);
 
-  const handleWeight = (e) => {
-    setWeight(e.target.value);
-  };
+  const calculate = (bmi, life, weight) => {
+    if (life === "sedentary") {
+      if (bmi >= 18.5 && bmi <= 25) {
+        setCal(weight * 25);
+        setBurn(700);
+        addCalIntake(weight * 25);
+        addBurnCal(700);
+      }
 
-  const weightOpt = () => {
-    if (props.bmi < 18) {
-      return (
-        <div>
-          <h2>How much weight do you want to increase?</h2>
-          <input
-            type="number"
-            placeholder="weight (kg)"
-            onChange={handleWeight}
-            min="0"
-            step="any"
-          />
-          <button onClick={addGoal}>Done</button>
-        </div>
-      );
-    } else if (props.bmi >= 18 && props.bmi < 25) {
-      return (
-        <div>
-          <h2>Do you want to increase or decrease weight?</h2>
-          <input
-            type="number"
-            placeholder="weight (kg)"
-            onChange={handleWeight}
-            step="any"
-          />
-          <button onClick={addGoal}>Done</button>
-        </div>
-      );
+      if (bmi < 18.5) {
+        setCal(weight * 30);
+        setBurn(500);
+        addCalIntake(weight * 30);
+        addBurnCal(500);
+      }
+
+      if (bmi > 25) {
+        setCal(weight * 20);
+        setBurn(1000);
+        addCalIntake(weight * 20);
+        addBurnCal(1000);
+      }
     } else {
-      return (
-        <div>
-          <h2>How much weight do you want to loose?</h2>
-          <input
-            type="number"
-            placeholder="weight (kg)"
-            onChange={handleWeight}
-            max="0"
-            step="any"
-          />
-          <button onClick={addGoal}>Done</button>
-        </div>
-      );
+      if (bmi >= 18.5 && bmi <= 25) {
+        setCal(weight * 25 + 700);
+        setBurn(500);
+        addCalIntake(weight * 25 + 700);
+        addBurnCal(500);
+      }
+
+      if (bmi < 18.5) {
+        setCal(weight * 30 + 700);
+        setBurn(300);
+        addCalIntake(weight * 30 + 700);
+        addBurnCal(300);
+      }
+
+      if (bmi > 25) {
+        setCal(weight * 20 + 200);
+        setBurn(1000);
+        addCalIntake(weight * 20 + 200);
+        addBurnCal(1000);
+      }
     }
   };
 
-  const addGoal = () => {
-    props.addgoal(weight);
-  };
+  useEffect(() => {
+    calculate(bmi, life, weight);
+    return () => {
+      setBurn(0);
+      setCal(0);
+    };
+  }, [bmi, life, weight]);
 
   return (
     <div>
-      <label>
-        Select Life style :
-        <select onChange={handleSelect}>
-          <option value="sedentary">Sedentary</option>
-          <option value="working">Working</option>
-          <option value="hardWord">Hard working</option>
-        </select>
-      </label>
-      {weightOpt()}
+      Total calories
+      <p>Cal : {cal}</p>
+      <p>Burn cal :{burn}</p>
     </div>
   );
 };
@@ -82,4 +74,6 @@ const mapStateToProps = (state) => {
   return state;
 };
 
-export default connect(mapStateToProps, { addgoal })(CalculateCal);
+export default connect(mapStateToProps, { addBurnCal, addCalIntake })(
+  CalculateCal
+);

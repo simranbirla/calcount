@@ -26,10 +26,6 @@ export const addGender = (gender) => {
   return { type: "ADD_GENDER", payload: gender };
 };
 
-export const addgoal = (goal) => {
-  return { type: "ADD_GOAL", payload: goal };
-};
-
 export const addfat = (fat) => {
   return { type: "ADD_FAT", payload: fat };
 };
@@ -72,4 +68,12 @@ export const addfoodLabel = (label) => {
 
 export const removefoodLabel = (label) => {
   return { type: "REMOVE_FOODLABEL", payload: label };
+};
+
+export const addCalIntake = (cal) => {
+  return { type: "ADD_CALINTAKE", payload: cal };
+};
+
+export const addBurnCal = (cal) => {
+  return { type: "ADD_BURNCAL", payload: cal };
 };
