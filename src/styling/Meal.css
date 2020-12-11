@@ -39,6 +39,10 @@ input:focus {
   height: 40px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
 }
 
 .meal__auto {
@@ -58,4 +62,36 @@ input:focus {
 
 .meal__auto p:hover {
   color: orange;
+}
+
+@media (max-width: 720px) {
+  .meal h2 {
+    margin: 20px;
+  }
+  .meal form input {
+    width: 60%;
+  }
+
+  .meal form button {
+    width: 30%;
+  }
+}
+
+@media (max-width: 300px) {
+  .meal form input {
+    width: 85%;
+  }
+
+  .meal form button {
+    width: 15%;
+    font-size: 15px;
+  }
+  .meal form button p {
+    display: none;
+  }
+
+  .meal h2 {
+    font-size: 1.3em;
+    margin-top: 50px;
+  }
 }

@@ -70,7 +70,7 @@ const Food = (props) => {
           ref={inRef}
         />
         <button>
-          Search <i className="fas fa-search"></i>
+          <p>Search</p> <i className="fas fa-search"></i>
         </button>
       </form>
       {optionList()}

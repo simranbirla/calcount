@@ -78,3 +78,56 @@
   font-size: 1.3em;
   font-weight: 500;
 }
+
+@media (max-width: 540px) {
+  .foodlist__contain {
+    width: 90%;
+  }
+
+  .foodlist__img h3 {
+    line-height: 30px;
+    font-size: 1.4em;
+    margin-top: 30px;
+  }
+
+  .foodlist__nutrients h4 {
+    font-size: 1.5em;
+  }
+  .foodlist__label span {
+    font-size: 15px;
+  }
+  .foodlist__buttons {
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .foodlist__img p {
+    top: 5px;
+    font-size: 12px;
+    right: 2px;
+  }
+
+  .foodlist__img {
+    flex-direction: column;
+  }
+
+  .foodlist__nutrients p {
+    font-size: 1em;
+  }
+
+  .foodlist__buttons {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .foodlist__buttons button {
+    margin: 10px;
+  }
+
+  .foodlist__nutrients h4 {
+    font-size: 1.13em;
+    right: 5px;
+  }
+}
