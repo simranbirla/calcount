@@ -1,7 +1,5 @@
 .meal {
   width: 100%;
-  background-color: rgb(218, 255, 206);
-  min-height: 90vh;
   margin: 0;
 }
 
@@ -27,6 +25,7 @@
   border: none;
   padding: 10px;
   font-weight: 600;
+  font-size: 18px;
 }
 
 input:focus {

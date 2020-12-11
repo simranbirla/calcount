@@ -3,6 +3,7 @@
   top: 50px;
   right: 10px;
   max-width: 200px;
+  z-index: 2;
 }
 
 .water-img {

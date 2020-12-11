@@ -38,11 +38,6 @@ const Food = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    /*  fetch(
-      `https://api.edamam.com/api/food-database/v2/parser?ingr=${food}&app_id=675aa5b5&app_key=65440c93a52d65ea4be40091a66fac78`
-    )
-      .then((res) => res.json())
-      .then((data) => setParse(data.hints));*/
     setList([]);
     const res = await edamam.get(
       "/api/food-database/v2/parser?app_id=675aa5b5&app_key=65440c93a52d65ea4be40091a66fac78",
