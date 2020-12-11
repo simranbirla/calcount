@@ -53,9 +53,9 @@ const Listfood = (props) => {
       <div className="added__popup">Item added</div>
       <div className="removed__popup">Item removed</div>
       <div className="foodlist">
-        {props.foodlist.map((item) => {
+        {props.foodlist.map((item, index) => {
           return (
-            <div className="foodlist__contain">
+            <div className="foodlist__contain" key={index}>
               <div className="foodlist__img">
                 {item.food.image ? (
                   <img
@@ -75,8 +75,8 @@ const Listfood = (props) => {
               </div>
               {item.food.foodContentsLabel ? (
                 <div className="foodlist__label">
-                  {item.food.foodContentsLabel.split(";").map((val) => (
-                    <span>{val} </span>
+                  {item.food.foodContentsLabel.split(";").map((val, index) => (
+                    <span key={index}>{val} </span>
                   ))}
                 </div>
               ) : null}

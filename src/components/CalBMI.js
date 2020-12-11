@@ -121,7 +121,7 @@ const CalBMI = (props) => {
             onClick={(e) => setGender(e.target.value)}
             required
           />
-          <label for="male">Male</label>
+          <label htmlFor="male">Male</label>
           <input
             required
             type="radio"
@@ -130,7 +130,7 @@ const CalBMI = (props) => {
             value="female"
             onClick={(e) => setGender(e.target.value)}
           />
-          <label label for="female">
+          <label label htmlFor="female">
             Female
           </label>
           <input
@@ -141,7 +141,7 @@ const CalBMI = (props) => {
             value="other"
             onClick={(e) => setGender(e.target.value)}
           />
-          <label for="other">Other</label>
+          <label htmlFor="other">Other</label>
         </div>
         <label>
           Select Life style :
