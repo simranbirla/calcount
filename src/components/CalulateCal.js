@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PieChart from "./PieChart";
 import { connect } from "react-redux";
 import { addCalIntake, addBurnCal } from "../actions";
+import "../styling/CalBMI.css";
 
 const CalculateCal = ({ bmi, weight, life, addBurnCal, addCalIntake }) => {
   const [cal, setCal] = useState(0);
@@ -62,16 +63,10 @@ const CalculateCal = ({ bmi, weight, life, addBurnCal, addCalIntake }) => {
   }, [bmi, life, weight]);
 
   return (
-    <div>
-      Total calories
-      <p>Cal : {cal}</p>
-      <p>Burn cal :{burn}</p>
-      <PieChart
-        protiens={cal * 0.6}
-        fats={cal * 0.2}
-        carbs={cal * 0.15}
-        other={cal * 0.05}
-      />
+    <div className="calories" style={{ textAlign: "center" }}>
+      <h2>Total calories</h2>
+      <h3>Cal : {cal}</h3>
+      <h3>Burn cal :{burn}</h3>
     </div>
   );
 };

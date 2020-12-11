@@ -28,6 +28,12 @@ const FrontPage = (props) => {
           consumed={props.nutrients.cal}
           total={props.body.calIntake}
         />
+        <PieChart
+          protiens={props.body.calIntake * 0.6}
+          fats={props.body.calIntake * 0.2}
+          carbs={props.body.calIntake * 0.15}
+          other={props.body.calIntake * 0.05}
+        />
       </div>
     </div>
   );

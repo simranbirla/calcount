@@ -2,11 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styling/Header.css";
 const Header = () => {
-  const closeHeader = () => {
-    document
-      .getElementsByClassName("header")[0]
-      .setAttribute("display", "none");
-  };
   return (
     <>
       <input type="checkbox" id="check" />

@@ -95,3 +95,52 @@ button:hover {
   text-align: center;
   line-height: 100px;
 }
+
+select {
+  padding: 10px 10px;
+  font-size: 1em;
+  border: none;
+  width: 60%;
+  border-radius: 10px;
+  margin: 0 10px 30px 10px;
+}
+
+@media (max-width: 720px) {
+  .calbmi form {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .calbmi form label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .calbmi form label p {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .calbmi form label input {
+    width: 100%;
+    margin-top: 5px;
+  }
+  .calbmi__radio {
+    flex-direction: column;
+  }
+  select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .calbmi {
+    width: 80%;
+  }
+}
+
+@media (max-width: 300px) {
+  .calbmi {
+    width: 95%;
+  }
+}
