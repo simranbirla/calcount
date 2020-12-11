@@ -65,7 +65,7 @@ input:focus {
 }
 
 .recipe__img > a {
-  line-height: 200px;
+  line-height: 100px;
   text-decoration: none;
   color: black;
   font-size: 1.7em;
@@ -102,4 +102,50 @@ input:focus {
 
 .labels {
   margin: 20px;
+}
+
+@media (max-width: 720px) {
+  .recipe__img > a {
+    font-size: 1.3em;
+    line-height: 1.3em;
+  }
+}
+
+@media (max-width: 540px) {
+  .recipe h2 {
+    margin-top: 40px;
+  }
+
+  .recipe form input {
+    width: 80%;
+    font-size: 20px;
+  }
+
+  .recipe form button {
+    width: 20%;
+  }
+
+  .recipe__main {
+    width: 90%;
+  }
+  .recipe__img > a {
+    font-size: 1.3em;
+    line-height: 1.3em;
+  }
+  .recipe__nutrients h4 {
+    top: 0;
+    right: 0px;
+  }
+}
+
+@media (max-width: 420px) {
+  .recipe__img {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recipe__nutrients h4 {
+    position: initial;
+    margin: 10px 0;
+  }
 }
