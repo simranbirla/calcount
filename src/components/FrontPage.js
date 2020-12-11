@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import "../styling/Front.css";
+import PieChart from "./PieChart";
+import CalorieChart from "./CaloriesChart";
 const FrontPage = (props) => {
   return (
     <div className="main">
@@ -16,7 +18,17 @@ const FrontPage = (props) => {
           {props.body.burnCal}
         </p>
       </div>
-      <div className="charts"></div>
+      <div className="charts">
+        <PieChart
+          protiens={props.nutrients.protiens}
+          fats={props.nutrients.fat}
+          carbs={props.nutrients.carbs}
+        />
+        <CalorieChart
+          consumed={props.nutrients.cal}
+          total={props.body.calIntake}
+        />
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PieChart from "./PieChart";
 import { connect } from "react-redux";
 import { addCalIntake, addBurnCal } from "../actions";
 
@@ -65,12 +66,17 @@ const CalculateCal = ({ bmi, weight, life, addBurnCal, addCalIntake }) => {
       Total calories
       <p>Cal : {cal}</p>
       <p>Burn cal :{burn}</p>
+      <PieChart
+        protiens={cal * 0.6}
+        fats={cal * 0.2}
+        carbs={cal * 0.15}
+        other={cal * 0.05}
+      />
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return state;
 };
 
